@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body>
+{% if suggestion %}
+    <h3 style="color: green;">Suggested Doctor: {{ suggestion }}</h3>
+{% endif %}
+<h1>Appointments</h1>
+
+<form action="/add_appointment" method="POST">
+    Patient ID: <input type="number" name="patient_id"><br>
+    Patient Problem: <input type="text" name="problem"><br>
+    Doctor ID: <input type="number" name="doctor_id"><br>
+    Date: <input type="date" name="date"><br>
+    Time: <input type="time" name="time"><br>
+    <button type="submit">Book Appointment</button>
+</form>
+
+<br>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Patient</th>
+    <th>Doctor</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Action</th>
+</tr>
+
+{% for a in appointments %}
+<tr>
+    <td>{{ a[0] }}</td>
+    <td>{{ a[1] }}</td>
+    <td>{{ a[2] }}</td>
+    <td>{{ a[3] }}</td>
+    <td>{{ a[4] }}</td>
+    <td><a href="/delete_appointment/{{ a[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+
+</table>
+<footer>
+<div class="links">
+    <a href="/">Home</a>
+    <a href="/patients">Patients</a>
+    <a href="/doctors">Doctors</a>
+    <a href="/search">Search</a>
+    <a href="/prescriptions">Prescriptions</a>
+</div>
+</footer>
+</body>
+</html>

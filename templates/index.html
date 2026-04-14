@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
+
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 0;
+            background-color: whitesmoke; 
+        }
+
+        header {
+            background-color: #1f9cc2; 
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #1f9cc2;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            text-decoration: none;
+            color: #29b930;
+            font-weight: bold;
+        }
+
+        form input {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1f6391;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Hospital Patient Record System</h1>
+</header>
+
+<div class="container">
+
+    <h2>Add Patient</h2>
+
+    <form action="/add_patient" method="POST">
+        Name: <input type="text" name="name"><br>
+        Age: <input type="number" name="age"><br>
+        Gender: <input type="text" name="gender"><br>
+        Problem: <input type="text" name="problem"><br>
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <br>
+
+    <a href="/patients">View Patients</a>
+    <a href="/doctors">Doctors</a>
+    <a href="/appointments">Appointments</a>
+    <a href="/search">Search</a>
+    <a href="/prescriptions">Prescriptions</a>
+
+</div>
+
+<footer>
+    <p>© 2026 Hospital System | Developed by Vinay</p>
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+</head>
+<body>
+    <h1>Doctors List</h1>
+
+    <form action="/add_doctor" method="POST">
+        Name: <input type="text" name="name"><br>
+        Specialization: <input type="text" name="specialization"><br>
+        Phone: <input type="text" name="phone"><br>
+        <button type="submit">Add Doctor</button>
+    </form>
+
+    <br>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+
+        {% for d in doctors %}
+        <tr>
+            <td>{{ d[0] }}</td>
+            <td>{{ d[1] }}</td>
+            <td>{{ d[2] }}</td>
+            <td>{{ d[3] }}</td>
+            <td>
+                <a href="/delete_doctor/{{ d[0] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <footer>
+<div class="links">
+    <a href="/">Home</a>
+    <a href="/patients">Patients</a>
+    <a href="/appointments">Appointments</a>
+    <a href="/search">Search</a>
+    <a href="/prescriptions">Prescriptions</a>
+</div>
+</footer>
+</body>
+</html>
